@@ -1,0 +1,147 @@
+:root {
+    /* Переменные по умолчанию (мягкая светлая тема) */
+    --bg-gradient: linear-gradient(135deg, #e0e0e0 0%, #f5f7fa 100%);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --text-color: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --btn-bg: #ffffff;
+    --btn-shadow: rgba(0, 0, 0, 0.05);
+    --accent-color: #4a90e2;
+}
+
+/* Автоматическая интеграция с цветами темы Telegram */
+body.tg {
+    --bg-gradient: var(--tg-theme-bg-color);
+    --text-color: var(--tg-theme-text-color);
+    --text-secondary: var(--tg-theme-hint-color);
+    --btn-bg: var(--tg-theme-secondary-bg-color);
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    transition: background 0.3s ease;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+header {
+    text-align: center;
+    margin-top: 10px;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* Сетка кнопок */
+.city-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.btn-city {
+    background: var(--btn-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--btn-shadow);
+    transition: all 0.2s ease;
+}
+
+.btn-city:active {
+    transform: scale(0.97);
+    opacity: 0.8;
+}
+
+/* Мягкая карточка погоды (эффект стекла) */
+.weather-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    text-align: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.weather-card.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+}
+
+.weather-info {
+    margin: 20px 0;
+}
+
+#temperature {
+    font-size: 54px;
+    font-weight: 300;
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+#description {
+    font-size: 16px;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-item .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.detail-item span:not(.label) {
+    font-weight: 600;
+    font-size: 15px;
+}
